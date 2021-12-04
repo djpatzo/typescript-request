@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "message": "Success message",
+  "html": "HTML String or HTML Code",
+  "data": {
+    "object_element_1": "Element 1",
+    "object_element_2": "Element 2",
+    "object_element_3": "Element 3",
+    "object_element_4": "Element 4"
+  }
+}

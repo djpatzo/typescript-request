@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- USE LINES ABOVE IF Uncaught ReferenceError: exports is not defined IN CONSOLE -->
+    <!-- DO NOT USE THIS IN WEBPACK or GULP BROWSERIFY/TSIFY PROJECTS -->
+    <script>
+        var exports = {};
+    </script>
+    <!-- END USE -->
+    <!-- END THIS ERROR -->
+
+    <script src="lib/request.js"></script>
+
+    <script>
+        const successUrl = 'https://github.com/djpatzo/typescript-request/success-request.json';
+        const errorUrl = './not-exists.json';
+
+        window.addEventListener('load', function() {
+            document.write('<h4>Check developers console!!!</h4>')
+            /**
+             * Success request
+             */
+            new TSRequest(successUrl, 'GET', [], {
+                onReady: function (responseData) {
+                    console.info('Ready success', responseData);
+                },
+                onSuccess: function(responseData) {
+                    console.log('Success', responseData);
+                }
+            });
+
+            /**
+             * Error request
+             */
+            new TSRequest(errorUrl, 'GET', [], {
+                onReady: function (responseData) {
+                    console.info('Ready error');
+                },
+                onError: function (responseData) {
+                    console.error('Error');
+
+                    //document.write('Error: ', JSON.stringify(responseData));
+                }
+            });
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>
