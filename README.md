@@ -107,6 +107,6 @@ const defaultOptions: any = {
 
 **onReady** is executed everytime where XMLHttpRequest **readyState is 4** (end request)
 
-**onSuccess** is executed everytime where HTTP Response Code is **200
+**onSuccess** is executed everytime where HTTP Response Code **is 200**
 
 **onError** is executed everytime where HTTP Response Code is **not 200**
