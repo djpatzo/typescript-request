@@ -2,12 +2,33 @@ import {HeadersInterface} from "./HeadersInterface";
 import {ResponseInterface} from "./ResponseInterface";
 
 export default class TSRequest {
+  /**
+   * @protected
+   */
   protected readonly responseType: XMLHttpRequestResponseType = 'json';
 
+  /**
+   * @protected
+   */
   protected options: any = null;
+  /**
+   * @protected
+   */
   protected xmlHttpRequest: XMLHttpRequest | null = null;
+
+  /**
+   * @protected
+   */
   protected method: string = '';
+
+  /**
+   * @protected
+   */
   protected url: string = '';
+
+  /**
+   * @protected
+   */
   protected headers: HeadersInterface[] = [
     {
       name: 'X-Requested-With',
@@ -42,8 +63,9 @@ export default class TSRequest {
   }
 
   /**
+   * Merging defaultOptions with options from constructor
    * @param options
-   * @private
+   * @protected
    */
   protected setOptions(options: any = {}): TSRequest {
     const defaultOptions: any = {
@@ -60,12 +82,19 @@ export default class TSRequest {
     return this;
   }
 
+  /**
+   * @param method
+   * @protected
+   */
   protected setMethod(method: string): TSRequest {
     this.method = method;
 
     return this;
   }
 
+  /**
+   * @protected
+   */
   protected initXMLHttpRequest(): void {
     if (this.xmlHttpRequest !== null) {
       this.xmlHttpRequest.abort();
@@ -135,18 +164,30 @@ export default class TSRequest {
     }
   }
 
+  /**
+   * @param url
+   * @protected
+   */
   protected setUrl(url: string): TSRequest {
     this.url = url;
 
     return this;
   }
 
+  /**
+   * @param eventType
+   * @protected
+   */
   protected dispatchWindowEvent(eventType: string) {
     const event: CustomEvent = new CustomEvent(eventType);
 
     window.dispatchEvent(event);
   }
 
+  /**
+   * @param headers
+   * @protected
+   */
   protected setHeaders(headers: HeadersInterface[] = []): TSRequest {
     this.headers = Object.assign({}, this.headers, headers);
 
